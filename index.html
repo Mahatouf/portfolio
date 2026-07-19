@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahatouf ALASSANI — Data Analyst</title>
+<meta name="description" content="Data Analyst freelance, ex-économiste en finances internationales. Dashboards, analyses économétriques et business intelligence pour entreprises, cabinets et institutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e1a2b;
+    --ink-soft:#1c2c45;
+    --paper:#f3f5f7;
+    --surface:#ffffff;
+    --flame:#ef8354;
+    --flame-dim:#c96a3f;
+    --mint:#4fb286;
+    --slate:#5b6472;
+    --slate-light:#8b93a1;
+    --line:#e2e6ea;
+    --line-dark:#2a3b57;
+    --text:#1f2430;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    color:var(--text);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit;}
+  ::selection{background:var(--flame); color:#fff;}
+  :focus-visible{outline:2px solid var(--flame); outline-offset:3px;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    color:var(--flame);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    text-transform:uppercase;
+  }
+  .eyebrow::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  section.on-dark .eyebrow::after{background:var(--line-dark);}
+
+  /* ===== TICKER ===== */
+  .ticker-bar{
+    background:var(--ink);
+    border-bottom:1px solid var(--line-dark);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:9px 0;
+  }
+  .ticker-track{
+    display:inline-flex;
+    animation:scroll-left 32s linear infinite;
+  }
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .ticker-item{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:#c7d0dc;
+    padding:0 26px;
+    border-right:1px solid var(--line-dark);
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .ticker-item .up{color:var(--mint);}
+  .ticker-item .down{color:var(--flame);}
+
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+    *{scroll-behavior:auto !important;}
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    background:var(--ink);
+    padding:18px 0;
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .logo{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:17px;
+    color:#fff;
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--flame);}
+  .nav-links{display:flex; gap:28px; list-style:none;}
+  .nav-links a{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:#c7d0dc;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--flame);}
+  @media(max-width:720px){.nav-links{display:none;}}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--ink);
+    color:#fff;
+    padding:76px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line-dark) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dark) 1px, transparent 1px);
+    background-size:56px 56px;
+    opacity:0.35;
+    mask-image:radial-gradient(ellipse 70% 60% at 30% 30%, black, transparent);
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr; gap:44px;}}
+
+  .hero h1{
+    font-family:var(--display);
+    font-size:clamp(32px,4.4vw,52px);
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-0.015em;
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{color:var(--flame);}
+  .hero-role{
+    font-family:var(--mono);
+    font-size:13.5px;
+    color:var(--mint);
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    margin-bottom:16px;
+  }
+  .hero p.lede{
+    font-size:16.5px;
+    color:#c7d0dc;
+    max-width:520px;
+    margin-bottom:32px;
+  }
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    padding:13px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s, box-shadow .15s, background .15s;
+  }
+  .btn-primary{background:var(--flame); color:#0e1a2b; font-weight:600;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(239,131,84,0.35);}
+  .btn-ghost{border:1px solid var(--line-dark); color:#fff;}
+  .btn-ghost:hover{border-color:var(--flame); color:var(--flame);}
+
+  /* KPI panel */
+  .kpi-panel{
+    position:relative;
+    background:var(--ink-soft);
+    border:1px solid var(--line-dark);
+    border-radius:6px;
+    padding:26px;
+  }
+  .kpi-panel-head{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:11px; color:var(--slate-light);
+    text-transform:uppercase; letter-spacing:0.06em;
+    margin-bottom:20px; padding-bottom:14px;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .kpi-panel-head .dot{width:7px;height:7px;border-radius:50%;background:var(--mint); box-shadow:0 0 0 3px rgba(79,178,134,0.2);}
+  .kpi-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .kpi{padding:14px 0;}
+  .kpi-num{
+    font-family:var(--display); font-weight:700;
+    font-size:30px; color:#fff; line-height:1;
+    margin-bottom:6px;
+  }
+  .kpi-num .unit{font-size:16px; color:var(--flame);}
+  .kpi-label{font-family:var(--mono); font-size:11px; color:var(--slate-light); text-transform:uppercase; letter-spacing:0.04em;}
+  .kpi-full{grid-column:1 / -1; border-top:1px solid var(--line-dark); padding-top:16px; margin-top:2px;}
+  .mini-chart{height:46px; width:100%;}
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:88px 0;}
+  section.tight{padding:72px 0;}
+  h2.section-title{
+    font-family:var(--display);
+    font-size:clamp(24px,3vw,32px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+  .section-intro{color:var(--slate); max-width:600px; margin-bottom:44px; font-size:15.5px;}
+
+  /* ===== ABOUT ===== */
+  .about-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  @media(max-width:800px){.about-layout{grid-template-columns:1fr;}}
+  .about-text p{color:var(--slate); font-size:15.5px; margin-bottom:16px;}
+  .about-text strong{color:var(--text);}
+
+  .tag-cloud{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-block{margin-bottom:20px;}
+  .skill-block-label{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--slate); margin-bottom:10px;}
+  .tag{
+    font-family:var(--mono); font-size:12.5px;
+    background:var(--surface); border:1px solid var(--line);
+    padding:6px 13px; border-radius:3px; color:var(--text);
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline{position:relative; padding-left:28px;}
+  .timeline::before{
+    content:""; position:absolute; left:0; top:6px; bottom:6px; width:1px;
+    background:var(--line);
+  }
+  .tl-item{position:relative; padding-bottom:36px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-32px; top:5px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--surface); border:2px solid var(--flame);
+  }
+  .tl-head{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 16px; margin-bottom:6px;}
+  .tl-title{font-family:var(--display); font-weight:600; font-size:17px;}
+  .tl-org{font-family:var(--mono); font-size:12px; color:var(--flame); text-transform:uppercase; letter-spacing:0.03em;}
+  .tl-desc{color:var(--slate); font-size:14.5px; max-width:640px;}
+
+  /* ===== PROJECTS ===== */
+  .project-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  @media(max-width:800px){.project-grid{grid-template-columns:1fr;}}
+  .project-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:28px;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .project-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 32px rgba(14,26,43,0.08);
+    border-color:var(--flame);
+  }
+  .project-cell{
+    font-family:var(--mono); font-size:11px; color:var(--slate-light);
+    letter-spacing:0.04em; margin-bottom:14px; display:block;
+  }
+  .project-card h3{
+    font-family:var(--display); font-size:19px; font-weight:600;
+    margin-bottom:10px; line-height:1.3;
+  }
+  .project-card p{color:var(--slate); font-size:14.5px; margin-bottom:18px;}
+  .project-tools{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px;}
+  .pill{
+    font-family:var(--mono); font-size:11px; color:var(--slate);
+    background:var(--paper); border:1px solid var(--line);
+    padding:4px 10px; border-radius:20px;
+  }
+  .project-link{
+    font-family:var(--mono); font-size:12.5px; color:var(--flame);
+    text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+    font-weight:600;
+  }
+  .project-link:hover{text-decoration:underline;}
+  .project-card.featured{grid-column:1 / -1;}
+
+  /* ===== SKILLS TABLE ===== */
+  .skills-table{width:100%; border-collapse:collapse;}
+  .skills-table th{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.05em; color:var(--slate); text-align:left;
+    padding:0 0 12px; border-bottom:1px solid var(--line); font-weight:500;
+  }
+  .skills-table td{
+    padding:15px 0; border-bottom:1px solid var(--line);
+    font-size:14.5px; vertical-align:middle;
+  }
+  .skills-table td.cat{font-family:var(--mono); font-size:12px; color:var(--flame); text-transform:uppercase; letter-spacing:0.04em;}
+  .level-dots{display:inline-flex; gap:4px;}
+  .level-dots span{width:7px; height:7px; border-radius:50%; background:var(--line);}
+  .level-dots span.filled{background:var(--flame);}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--ink); color:#fff; text-align:center;}
+  .contact h2{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(26px,4vw,40px); margin-bottom:16px; letter-spacing:-0.01em;
+  }
+  .contact p{color:#c7d0dc; max-width:480px; margin:0 auto 34px; font-size:15.5px;}
+  .contact-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .contact-card{
+    font-family:var(--mono); font-size:13.5px;
+    border:1px solid var(--line-dark); border-radius:4px;
+    padding:14px 22px; text-decoration:none; color:#fff;
+    transition:border-color .15s, color .15s;
+  }
+  .contact-card:hover{border-color:var(--flame); color:var(--flame);}
+  .avail{
+    margin-top:40px; display:inline-flex; align-items:center; gap:9px;
+    font-family:var(--mono); font-size:12px; color:var(--mint);
+    text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .avail .dot{width:7px;height:7px;border-radius:50%; background:var(--mint); box-shadow:0 0 0 3px rgba(79,178,134,0.2);}
+
+  footer{
+    background:var(--ink); border-top:1px solid var(--line-dark);
+    padding:22px 0; text-align:center;
+  }
+  footer p{font-family:var(--mono); font-size:11.5px; color:var(--slate-light);}
+
+  [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].is-visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">M<span>.</span>ALASSANI</div>
+    <ul class="nav-links">
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-role">Data Analyst · Économiste en finances internationales</div>
+      <h1>Je transforme des données économiques et financières en <span class="accent">décisions claires.</span></h1>
+      <p class="lede">Freelance disponible en télétravail, pour recruteurs, cabinets et entreprises en Afrique de l'Ouest comme à l'international. SQL, Python, Power BI — au service d'analyses rigoureuses.</p>
+      <div class="hero-cta">
+        <a href="#projets" class="btn btn-primary">Voir les projets →</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+    </div>
+
+    <div class="kpi-panel">
+      <div class="kpi-panel-head">
+        <span>dashboard.status</span>
+        <span class="dot"></span>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-num">5</div>
+          <div class="kpi-label">Projets data</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num">15<span class="unit">+</span></div>
+          <div class="kpi-label">Pays analysés</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num">3</div>
+          <div class="kpi-label">Secteurs clés</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num">100<span class="unit">%</span></div>
+          <div class="kpi-label">Remote-ready</div>
+        </div>
+        <div class="kpi kpi-full">
+          <svg class="mini-chart" viewBox="0 0 300 46" preserveAspectRatio="none">
+            <polyline points="0,36 30,30 60,32 90,20 120,24 150,14 180,18 210,8 240,12 270,4 300,7"
+              fill="none" stroke="#4fb286" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="profil">
+    <div class="wrap">
+      <div class="eyebrow">A1 — Profil</div>
+      <div class="about-layout">
+        <div class="about-text">
+          <p><strong>Économiste de formation</strong>, spécialisé en finances internationales, avec une expérience concrète en audit bancaire, analyse macroéconomique et gestion de bases de données.</p>
+          <p>Reconversion vers la data analyse pour allier <strong>rigueur économique</strong> et <strong>compétences techniques</strong> — SQL, Python, Power BI — au service d'entreprises, cabinets et institutions financières.</p>
+          <p>Recherche des missions freelance en télétravail, en Afrique de l'Ouest comme à l'international.</p>
+        </div>
+        <div>
+          <div class="skill-block">
+            <div class="skill-block-label">Langages &amp; requêtes</div>
+            <div class="tag-cloud"><span class="tag">Python</span><span class="tag">SQL</span></div>
+          </div>
+          <div class="skill-block">
+            <div class="skill-block-label">Visualisation (BI)</div>
+            <div class="tag-cloud"><span class="tag">Power BI</span><span class="tag">Tableau</span></div>
+          </div>
+          <div class="skill-block">
+            <div class="skill-block-label">Data &amp; analyse</div>
+            <div class="tag-cloud">
+              <span class="tag">Pandas</span><span class="tag">Excel avancé</span>
+              <span class="tag">Machine Learning</span><span class="tag">Économétrie</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="parcours" class="tight" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">B1 — Parcours</div>
+      <h2 class="section-title">Expérience professionnelle</h2>
+      <p class="section-intro">Un parcours entre finance, audit et données — la base d'une analyse qui comprend le contexte business, pas seulement les chiffres.</p>
+
+      <div class="timeline">
+        <div class="tl-item" data-reveal>
+          <div class="tl-head">
+            <span class="tl-title">Contrôle Audit Interne</span>
+            <span class="tl-org">Banque Panafricaine Ecobank — Togo</span>
+          </div>
+          <p class="tl-desc">Analyse des risques et contrôle des processus financiers ; rigueur analytique appliquée à des données bancaires sensibles.</p>
+        </div>
+        <div class="tl-item" data-reveal>
+          <div class="tl-head">
+            <span class="tl-title">Stage d'application</span>
+            <span class="tl-org">Banque Centrale des États de l'Afrique de l'Ouest (BCEAO)</span>
+          </div>
+          <p class="tl-desc">Immersion en analyse économique et financière à l'échelle régionale, zone UEMOA.</p>
+        </div>
+        <div class="tl-item" data-reveal>
+          <div class="tl-head">
+            <span class="tl-title">Collecte et gestion de base de données</span>
+            <span class="tl-org">Gorée Institute — Dakar</span>
+          </div>
+          <p class="tl-desc">Mission d'assistance en structuration et gestion de données ; base directe des compétences data analyst.</p>
+        </div>
+        <div class="tl-item" data-reveal>
+          <div class="tl-head">
+            <span class="tl-title">Enseignant</span>
+            <span class="tl-org">Économie, Mathématiques, Statistiques</span>
+          </div>
+          <p class="tl-desc">Pédagogie et maîtrise des fondements quantitatifs essentiels à l'analyse de données.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="wrap">
+      <div class="eyebrow">C1 — Projets</div>
+      <h2 class="section-title">Projets Data Analyst</h2>
+      <p class="section-intro">Cinq projets pensés pour couvrir l'essentiel d'une mission freelance : SQL, Python, machine learning, business intelligence et économétrie.</p>
+
+      <div class="project-grid">
+        <article class="project-card" data-reveal>
+          <span class="project-cell">C1.1</span>
+          <h3>Dashboard macroéconomique international</h3>
+          <p>Analyse comparative du PIB, de l'inflation et du taux de change pour 10 à 15 pays (2015–2024).</p>
+          <div class="project-tools"><span class="pill">Power BI</span><span class="pill">World Bank Data</span></div>
+          <a href="https://github.com/Mahatouf/dashboard-macro-uemoa" target="_blank" rel="noopener" class="project-link">Voir le projet →</a>
+        </article>
+
+        <article class="project-card" data-reveal>
+          <span class="project-cell">C1.2</span>
+          <h3>Évaluation de portefeuille d'investissement</h3>
+          <p>Calcul de rendement, volatilité et ratio de Sharpe sur un panier d'actions et ETF.</p>
+          <div class="project-tools"><span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">Yahoo Finance</span></div>
+          <a href="https://github.com/Mahatouf/portefeuille-investissement" target="_blank" rel="noopener" class="project-link">Voir le projet →</a>
+        </article>
+
+        <article class="project-card" data-reveal>
+          <span class="project-cell">C1.3</span>
+          <h3>Prédiction du churn client</h3>
+          <p>Modèle de classification pour anticiper l'attrition client et recommandations business associées.</p>
+          <div class="project-tools"><span class="pill">Python</span><span class="pill">Scikit-learn</span></div>
+          <a href="https://github.com/Mahatouf/churn-prediction-telco" target="_blank" rel="noopener" class="project-link">Voir le projet →</a>
+        </article>
+
+        <article class="project-card" data-reveal>
+          <span class="project-cell">C1.4</span>
+          <h3>Dashboard ventes &amp; performance commerciale</h3>
+          <p>Requêtes SQL et dashboard BI simulant les besoins réels d'une PME : ventes, stock, clients.</p>
+          <div class="project-tools"><span class="pill">SQL</span><span class="pill">Power BI</span></div>
+          <a href="https://github.com/Mahatouf/dashboard-sql-pme" target="_blank" rel="noopener" class="project-link">Voir le projet →</a>
+        </article>
+
+        <article class="project-card featured" data-reveal>
+          <span class="project-cell">C1.5</span>
+          <h3>Impact du taux de change sur le commerce extérieur — zone UEMOA</h3>
+          <p>Étude économétrique reliant fluctuations monétaires et balance commerciale régionale. Le projet qui relie directement l'expertise économiste et les compétences data.</p>
+          <div class="project-tools"><span class="pill">Python</span><span class="pill">Statsmodels</span><span class="pill">BCEAO Data</span></div>
+          <a href="https://github.com/Mahatouf/impact-taux-change-uemoa" target="_blank" rel="noopener" class="project-link">Voir le projet →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences" class="tight" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">D1 — Compétences</div>
+      <h2 class="section-title">Niveau de maîtrise</h2>
+      <p class="section-intro">Une évaluation honnête, pas gonflée — utile pour cadrer une mission dès le premier échange.</p>
+
+      <table class="skills-table">
+        <thead>
+          <tr><th>Compétence</th><th>Catégorie</th><th style="text-align:right;">Niveau</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SQL</td><td class="cat">Requêtes</td><td style="text-align:right;"><span class="level-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span></span></td></tr>
+          <tr><td>Python (Pandas, Scikit-learn)</td><td class="cat">Data &amp; ML</td><td style="text-align:right;"><span class="level-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></span></td></tr>
+          <tr><td>Power BI</td><td class="cat">Visualisation</td><td style="text-align:right;"><span class="level-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span></span></td></tr>
+          <tr><td>Tableau</td><td class="cat">Visualisation</td><td style="text-align:right;"><span class="level-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></span></td></tr>
+          <tr><td>Excel avancé</td><td class="cat">Data</td><td style="text-align:right;"><span class="level-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span></span></td></tr>
+          <tr><td>Économétrie</td><td class="cat">Analyse</td><td style="text-align:right;"><span class="level-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;">E1 — Contact</div>
+      <h2>Une mission en tête ?</h2>
+      <p>Disponible en télétravail pour des missions freelance, ponctuelles ou récurrentes, avec des recruteurs, agences et entreprises locales ou internationales.</p>
+      <div class="contact-links">
+        <a class="contact-card" href="mailto:mahatoufalassani@gmail.com">✉ mahatoufalassani@gmail.com</a>
+        <a class="contact-card" href="https://www.linkedin.com/in/mahatouf-alassani" target="_blank" rel="noopener">in LinkedIn — Mahatouf ALASSANI</a>
+      </div>
+      <div class="avail"><span class="dot"></span> Disponible pour de nouvelles missions</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Mahatouf ALASSANI — Data Analyst freelance. Conçu et codé sur mesure.</p>
+  </div>
+</footer>
+
+<script>
+  // Ticker content — duplicated for seamless loop
+  const tickerData = [
+    { label:'EUR/XOF', value:'655.957', dir:'flat' },
+    { label:'USD/XOF', value:'601.42', dir:'up' },
+    { label:'PIB UEMOA', value:'+5.2%', dir:'up' },
+    { label:'Inflation zone UEMOA', value:'2.8%', dir:'down' },
+    { label:'Projets livrés', value:'5', dir:'flat' },
+    { label:'Disponibilité', value:'Freelance / Remote', dir:'up' },
+  ];
+  const track = document.getElementById('tickerTrack');
+  function renderTicker(){
+    const arrow = d => d==='up' ? '<span class="up">▲</span>' : d==='down' ? '<span class="down">▼</span>' : '<span>—</span>';
+    let html = '';
+    for(let i=0;i<2;i++){
+      tickerData.forEach(t=>{
+        html += `<span class="ticker-item">${arrow(t.dir)} ${t.label} <strong>${t.value}</strong></span>`;
+      });
+    }
+    track.innerHTML = html;
+  }
+  renderTicker();
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(el=>io.observe(el));
+  } else {
+    revealEls.forEach(el=>el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
+
